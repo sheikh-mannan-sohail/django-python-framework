@@ -5,9 +5,15 @@
     <title>Index Page</title>
 </head>
 <body>
-<h1><center>Welcome to Index page of {{company_name}}</center></h1>
+<h1>
+    <center>Welcome to Index page of {{company_name}}</center>
+</h1>
 <h3>Founder & CEO : {{founder}}</h3>
-<h3>Message from  {{founder}} : </h3>
+<h3>Message from {{founder}} : </h3>
 <h3>{{message}}</h3>
+<form action="/remove_punctuation" method="get">
+    <textarea name="user_query_text" style="margin: 0px; height: 102px; width: 834px;"></textarea><br/>
+    <button type="submit">Analyze text</button>
+</form>
 </body>
 </html>

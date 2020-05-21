@@ -9,7 +9,7 @@ def index(request):
     parameter_json = {
         "company_name": "Redesign",
         "founder": "Ben James",
-        "message": "We restructure you unstructured textual  data "
+        "message": "We restructure you unstructured textual data.\n Wanna try, place the text it in textbox"
     }
     return render(request, 'index.html', parameter_json)
 
@@ -33,6 +33,7 @@ def contact(request):
 
 
 def remove_punctuation(request):
+    print(request.GET.get("user_query_text"), "default")
     return HttpResponse("Remove punctuation")
 
 
