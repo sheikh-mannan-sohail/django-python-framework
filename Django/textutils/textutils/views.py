@@ -33,8 +33,20 @@ def contact(request):
 
 
 def remove_punctuation(request):
-    print(request.GET.get("user_query_text"), "default")
-    return HttpResponse("Remove punctuation")
+    user_query_text = request.GET.get("user_query_text", "default")
+    do_analysis = request.GET.get("do_analysis", "off")
+    # if checkbox is ticked value  will be on else we set value to off
+
+    structured_text = ""
+
+    if do_analysis == "on":
+        punctuations = '''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
+        for character in user_query_text:
+            if character not in punctuations:
+                structured_text = structured_text + character
+        params = {"user_input_text": user_query_text, "cleaned_text": structured_text}
+        return render(request, "removed_punctuation_response.html", params)
+    return HttpResponse("Please tick the  checkbox to perform  analysis")
 
 
 def capitalize_first(request):
