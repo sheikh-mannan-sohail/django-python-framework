@@ -6,7 +6,12 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html')
+    parameter_json = {
+        "company_name": "Redesign",
+        "founder": "Ben James",
+        "message": "We restructure you unstructured textual  data "
+    }
+    return render(request, 'index.html', parameter_json)
 
 
 def about(request):
