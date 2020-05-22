@@ -13,7 +13,10 @@
 <h3>{{message}}</h3>
 <form action="/remove_punctuation" method="get">
     <textarea name="user_query_text" style="margin: 0px; height: 102px; width: 834px;"></textarea><br/>
-    <input type="checkbox" name="do_analysis"> Remove Punctuation</input><br/>
+    <input type="checkbox" name="remove_punc"> Remove Punctuation</input><br/>
+    <input type="checkbox" name="capitalize"> Capitalize</input><br/>
+    <input type="checkbox" name="remove_newlines"> Remove Newlines</input><br/>
+    <input type="checkbox" name="character_count"> Character counter</input><br/>
     <button type="submit">Analyze text</button>
 </form>
 </body>

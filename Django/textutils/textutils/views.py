@@ -34,16 +34,33 @@ def contact(request):
 
 def remove_punctuation(request):
     user_query_text = request.GET.get("user_query_text", "default")
-    do_analysis = request.GET.get("do_analysis", "off")
+    remove_punc = request.GET.get("remove_punc", "off")
+    capitalize = request.GET.get("capitalize", "off")
+    remove_newlines = request.GET.get("remove_newlines", "off")
+    character_count = request.GET.get("character_count", "off")
     # if checkbox is ticked value  will be on else we set value to off
 
     structured_text = ""
 
-    if do_analysis == "on":
+    if remove_punc == "on":
         punctuations = '''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
+        print(user_query_text)
         for character in user_query_text:
             if character not in punctuations:
                 structured_text = structured_text + character
+        params = {"user_input_text": user_query_text, "cleaned_text": structured_text}
+        return render(request, "removed_punctuation_response.html", params)
+    elif capitalize == "on":
+        structured_text = user_query_text.upper()
+        params = {"user_input_text": user_query_text, "cleaned_text": structured_text}
+        return render(request, "removed_punctuation_response.html", params)
+    elif remove_newlines == "on":
+        structured_text = "".join(filter(lambda char: char is not '\n', user_query_text))
+        params = {"user_input_text": user_query_text, "cleaned_text": structured_text}
+        return render(request, "removed_punctuation_response.html", params)
+
+    elif character_count == "on":
+        structured_text = len(user_query_text)
         params = {"user_input_text": user_query_text, "cleaned_text": structured_text}
         return render(request, "removed_punctuation_response.html", params)
     return HttpResponse("Please tick the  checkbox to perform  analysis")
