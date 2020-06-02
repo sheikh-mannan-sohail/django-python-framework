@@ -33,12 +33,11 @@ def contact(request):
 
 
 def remove_punctuation(request):
-    user_query_text = request.GET.get("user_query_text", "default")
-    print(user_query_text)
-    remove_punc = request.GET.get("remove_punc", "off")
-    capitalize = request.GET.get("capitalize", "off")
-    remove_newlines = request.GET.get("remove_newlines", "off")
-    character_count = request.GET.get("character_count", "off")
+    user_query_text = request.POST.get("user_query_text", "default")
+    remove_punc = request.POST.get("remove_punc", "off")
+    capitalize = request.POST.get("capitalize", "off")
+    remove_newlines = request.POST.get("remove_newlines", "off")
+    character_count = request.POST.get("character_count", "off")
     # if checkbox is ticked value  will be on else we set value to off
 
     structured_text = ""

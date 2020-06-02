@@ -46,7 +46,8 @@
 </div>
 
 <div class="container">
-    <form action="/remove_punctuation" method="get">
+    <form action="/remove_punctuation" method="post">
+        {% csrf_token %}
         <div class="form-group">
             <label for="exampleFormControlTextarea1" >Enter your text here </label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="user_query_text"  rows="10"></textarea>
